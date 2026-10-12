@@ -1,0 +1,39 @@
+{
+  "source": "https://huggingface.co/datasets/tatsu-lab/alpaca_eval/resolve/main/alpaca_eval_all_outputs.json",
+  "models": [
+    "gpt4",
+    "claude",
+    "vicuna-13b"
+  ],
+  "label_map": {
+    "gpt4": 0,
+    "claude": 1,
+    "vicuna-13b": 2
+  },
+  "seed": 42,
+  "shared_prompts": 805,
+  "total_examples": 2415,
+  "split_examples": {
+    "train": 1689,
+    "test": 363,
+    "validation": 363
+  },
+  "vocabulary_size": 12003,
+  "embedding_dimension": 64,
+  "cnn_filters_per_kernel": 64,
+  "cnn_kernel_sizes": [
+    3,
+    4,
+    5
+  ],
+  "lstm_hidden_size": 64,
+  "dropout": 0.3,
+  "batch_size": 64,
+  "epochs": 8,
+  "learning_rate": 0.001,
+  "prompt_token_limit": 96,
+  "response_token_limit": 160,
+  "checkpoint_selection": "highest validation macro-F1; earliest tie",
+  "device": "cuda",
+  "elapsed_seconds": 22.82481813430786
+}
