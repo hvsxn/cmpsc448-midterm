@@ -1,15 +1,32 @@
 # Who Wrote It? Identifying LLMs from Their Responses
 
-CMPSC 448 midterm project - Nihat Hasan (individual participant and team leader).
+Individual CMPSC 448 course project by Nihat Hasan, Penn State.
 
 ## Main findings
 
 On 363 held-out responses from 121 unseen prompts, the output-only CNN achieved
-70.25% accuracy and the output-only LSTM achieved 49.86%. Prompt-only accuracy
+70.25% accuracy, and the output-only LSTM achieved 49.86%. Prompt-only accuracy
 was exactly 33.33% for both models because each prompt occurs once per class.
 Adding prompts changed CNN accuracy to 65.84% and LSTM accuracy to 51.24%.
 
-Read `Midterm_Report.pdf` for the full methods, results, limitations, and analysis.
+Read the [full project report](Midterm_Report.pdf) for methods, results, limitations, and analysis.
+
+## Experiment results
+
+All configurations were evaluated on 363 held-out responses from 121 unseen prompts.
+
+| Classifier | Text used | Test accuracy | Macro-F1 |
+| --- | --- | ---: | ---: |
+| CNN | Prompt only | 33.33% | 0.3130 |
+| LSTM | Prompt only | 33.33% | 0.3231 |
+| CNN | Response only | **70.25%** | **0.7044** |
+| LSTM | Response only | 49.86% | 0.4948 |
+| CNN | Prompt + response | 65.84% | 0.6633 |
+| LSTM | Prompt + response | 51.24% | 0.5090 |
+
+### Best configuration: response-only CNN
+
+![Response-only CNN confusion matrix](CNN_output_only_confusion.png)
 
 ## Reproduce
 
@@ -21,7 +38,7 @@ python main.py
 ```
 
 The script downloads the public AlpacaEval response file and runs six experiments.
-GPU is used if available; CPU is supported but slower. Results go in `run_results/`.
+It uses a GPU if available; CPU is supported but slower. Results go in `run_results/`.
 `original_colab_run.py` is the exact script saved during the submitted Colab run.
 `main.py` changes only output paths and the optional Colab download for portability.
 The original experiment ran on CUDA; the GPU model and package versions were not
